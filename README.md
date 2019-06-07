@@ -1,3 +1,3 @@
 # Random-Packing
 
-![Drag Racing](IMG\prev.png)
+![](IMG\prev.png)
