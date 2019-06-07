@@ -1,3 +1,3 @@
 # Random-Packing
 
-![](IMG\prev.png)
+![alt text](IMG/prev.png "Logo Title Text 1")
