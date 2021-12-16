@@ -1,96 +1,94 @@
 // Light weight Vector class
 // Andrin Rehmann, 2019
 
-V tmp = new V(0,0);
-class V{
+Vector tmp = new Vector(0,0);
+class Vector{
   double x;
   double y;
   
-  V(double x, double y){
+  Vector(double x, double y){
     this.x = x;
     this.y = y;
   }
   
-  V(V other){
+  Vector(Vector other){
     this.x = 0;
     this.y = 0;
     this.add(other);
   }
   
-  V set(V other){
+  Vector set(Vector other){
     this.x = other.x;
     this.y = other.y;
     return this;
   }
   
   // return distance vector to other point
-  V distVec(V other){
-    return new V(other).sub(this);
+  Vector distVec(Vector other){
+    return new Vector(other).sub(this);
   }
   
   // subtraction
-  V sub(V other){
+  Vector sub(Vector other){
     this.x -= other.x;
     this.y -= other.y;
     return this;
   }
   
   // subtraction
-  V sub(double x, double y){
+  Vector sub(double x, double y){
     this.x -= x;
     this.y -= y;
     return this;
   }
   
   // addition
-  V add(V other){
+  Vector add(Vector other){
     this.x += other.x;
     this.y += other.y;
     return this;
   }
   
-    // subtraction
-  V add(double x, double y){
+  // addition
+  Vector add(double x, double y){
     this.x += x;
     this.y += y;
     return this;
   }
   
   // multiply by scalar
-  V mulS(double f){
+  Vector mulS(double f){
     this.x *= f;
     this.y *= f;
     return this;
   }
   
-  V divS(double f){
+  Vector divS(double f){
     this.x /= f;
     this.y /= f;
     return this;
   }
   
-  V rot(V pivot, float angle){
+  Vector rot(Vector pivot, float angle){
     tmp.set(this);
     this.x = Math.cos(angle) * (tmp.x - pivot.x) - Math.sin(angle) * (tmp.y-pivot.y) + pivot.x;
     this.y = Math.sin(angle) * (tmp.x - pivot.x) + Math.cos(angle) * (tmp.y - pivot.y) + pivot.y;
     return this;
   }
   
-  // normalize
-  V norm(){
+  // normalize vector
+  Vector norm(){
     this.divS(this.l());
     return this;
   }
   
-  // copy
-  V copy(){
-    return new V(this);
+  // Copy current vector to create new instance and make computations on
+  Vector copy(){
+    return new Vector(this);
   }
   
-  boolean isLeft(V a, V b){
-    
+  boolean isLeft(Vector a, Vector b){
     return ((a.x - x)*(b.y - y) > (a.y - y)*(b.x - x));
-      
   }
   
   // Get length
